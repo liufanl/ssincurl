@@ -48,7 +48,7 @@ new Vue({
                                     mappingResult.lock = lock
                                     mappingResult.protocol = protocol
                                     mappingResult.obfs = obfs
-                                    ssUrl=this.reHost(mappingJson[j][k].host)+':'+mappingJson[j][k].service_port+':'+protocol+':'+lock+':'+'obfs'
+                                    ssUrl=this.reHost(mappingJson[j][k].host)+':'+mappingJson[j][k].service_port+':'+protocol+':'+lock+':'+obfs
                                     //ssUrl = lock+':'+pwd+'@'+this.reHost(mappingJson[j][k].host)+':'+mappingJson[j][k].service_port
                                     mappingResult.ss_url = ssHead+this.base64DeCode(ssUrl)
                                     this.configs.push(mappingResult)
