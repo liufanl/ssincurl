@@ -77,22 +77,26 @@ new Vue({
         },
         rePwd: function (oldpwd) {
             if(oldpwd == null) return
-            pwd = oldpwd.substring(oldpwd.indexOf("k ") + 2,oldpwd.indexOf(" -m"))
+            if(/-k\s+([^ ]+)/.test(oldpwd))
+                    pwd = RegExp.$1;
             return pwd
         },
         reLock: function (oldLock) {
             if(oldLock == null) return
-            lock = oldLock.substring(oldLock.indexOf("m ")+2,oldLock.indexOf(" -O"))
+            if(/-m\s+([^ ]+)/.test(oldLock))
+                    lock = RegExp.$1;
             return lock
         },
         reProtocol: function (oldProtocol) {
             if(oldProtocol == null) return
-            protocol = oldProtocol.substring(oldProtocol.indexOf("O ")+2,oldProtocol.indexOf(" -o"))
+            if(/-O\s+([^ ]+)/.test(oldProtocol))
+                    protocol = RegExp.$1;
             return protocol
         },
         reObfs: function (oldObfs) {
             if(oldObfs == null) return
-            obfs = oldObfs.substring(oldObfs.indexOf("O ")+2,oldObfs.indexOf(" -t"))
+            if(/-o\s+([^ ]+)/.test(oldObfs))
+                    obfs = RegExp.$1;
             return obfs
         },
         base64DeCode: function (str) {
