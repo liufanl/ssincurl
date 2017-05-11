@@ -27,13 +27,15 @@ new Vue({
                         var cmd = result.data[i].attributes.cmd
                         var pwd = this.rePwd(cmd)
                         var lock = this.reLock(cmd)
+                        var protocol = this.reProtocol(cmd)
+                        var obfs = this.reObfs(cmd)
                         var image_name = result.data[i].attributes.image_name
                         if (image_name.indexOf("ssr-with-net-speeder") ==-1) {
                             continue
                         }
                         var mappingText = JSON.stringify(mappingsObj)
                         var mappingJson = eval('(' + mappingText + ')')
-                        var ssHead = 'ss://'
+                        var ssHead = 'ssr://'
                         if (mappingJson) {
                             for (var j = 0; j < mappingJson.length; j++) {
                                 for (var k = 0; k < mappingJson[j].length; k++) {
@@ -44,7 +46,10 @@ new Vue({
                                     mappingResult.cmd = cmd
                                     mappingResult.pwd = pwd
                                     mappingResult.lock = lock
-                                    ssUrl = lock+':'+pwd+'@'+this.reHost(mappingJson[j][k].host)+':'+mappingJson[j][k].service_port
+                                    mappingResult.protocol = protocol
+                                    mappingResult.obfs = obfs
+                                    ssUrl=this.reHost(mappingJson[j][k].host)+':'+mappingJson[j][k].service_port+':'+protocol+':'+lock+':'+'obfs'
+                                    //ssUrl = lock+':'+pwd+'@'+this.reHost(mappingJson[j][k].host)+':'+mappingJson[j][k].service_port
                                     mappingResult.ss_url = ssHead+this.base64DeCode(ssUrl)
                                     this.configs.push(mappingResult)
                                 }
@@ -77,8 +82,18 @@ new Vue({
         },
         reLock: function (oldLock) {
             if(oldLock == null) return
-            lock = oldLock.substring(oldLock.indexOf("m ")+2)
+            lock = oldLock.substring(oldLock.indexOf("m ")+2,oldLock.indexOf(" -O"))
             return lock
+        },
+        reProtocol: function (oldProtocol) {
+            if(oldProtocol == null) return
+            protocol = oldProtocol.substring(oldProtocol.indexOf("O ")+2,oldProtocol.indexOf(" -o"))
+            return protocol
+        },
+        reObfs: function (oldObfs) {
+            if(oldObfs == null) return
+            obfs = oldObfs.substring(oldObfs.indexOf("O ")+2,oldObfs.indexOf(" -t"))
+            return obfs
         },
         base64DeCode: function (str) {
             var rawStr = str
