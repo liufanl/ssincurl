@@ -22,6 +22,7 @@ new Vue({
                     }
                     var result = JSON.parse(response.body)
                     this.configs = []               
+                    var docker_name=["malaohu/ssr-with-net-speeder","lowid/ss-with-net-speeder","smounives/shadowsocksr-docker"]
                     for (var i = 0; i < result.data.length; i++) {
                         var mappingsObj = result.data[i].attributes.port_mappings
                         var cmd = result.data[i].attributes.cmd
@@ -30,7 +31,7 @@ new Vue({
                         var protocol = this.reProtocol(cmd)
                         var obfs = this.reObfs(cmd)
                         var image_name = result.data[i].attributes.image_name
-                        if (image_name.indexOf("ssr-with-net-speeder") ==-1) {
+                        if (docker_name.indexOf(image_name) ==-1) {
                             continue
                         }
                         var mappingText = JSON.stringify(mappingsObj)
