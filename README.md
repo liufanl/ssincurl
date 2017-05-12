@@ -11,3 +11,6 @@
 <br>
 仅兼容类似下图 Image ，其他需求可 Fork 修改 js/app.js 
 ![](https://ws1.sinaimg.cn/large/005HABCygy1fdl17ghpecj30os0ibdgb)
+env中需要做如下设置
+user=arukas用户名
+passwd=arukas密码
