@@ -7,3 +7,14 @@ RUN docker-php-ext-install pdo_mysql
 
 # /var/www/html/ 为 Apache 目录 
 COPY . /var/www/html/
+
+
+ENV user xx@xx.xx
+ENV passwd passwd
+ENV ssname jaz-ss
+
+RUN chmod +x /var/www/html/run.sh
+
+EXPOSE 80
+
+CMD ["/var/www/html/run.sh"]
