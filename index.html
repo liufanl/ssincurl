@@ -80,6 +80,19 @@
             <td v-for="conf in configs">{{conf.service_port}}</td>
         </tr>
         <tr>
+            <td>加密方法</td>
+            <td v-for="conf in configs">{{conf.lock}}</td>
+        </tr>
+        <tr>
+            <td>协议</td>
+            <td v-for="conf in configs">{{conf.protocol}}</td>
+        </tr>
+        <tr>
+            <td>混淆方式</td>
+            <td v-for="conf in configs">{{conf.obfs}}</td>
+        </tr>
+        <!--
+        <tr>
             <td>实际端口</td>
             <td v-for="conf in configs">{{conf.container_port}}</td>
         </tr>
@@ -87,6 +100,7 @@
             <td>CMD</td>
             <td v-for="conf in configs">{{conf.cmd}}</td>
         </tr>
+        -->
         <tr>
             <td>Result</td>
             <td v-for="conf in configs">
