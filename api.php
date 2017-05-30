@@ -23,6 +23,8 @@ function login($cookie)
         'email' => "user", //此处输入您的arukas登录邮箱
         'password' => "passwd" //此处输入您的arukas登录密码
     );
+    echo $email
+    echo $password
     $loginUrl = "https://app.arukas.io/api/login";
     $ch_login = curl_init();
     curl_setopt($ch_login, CURLOPT_URL, $loginUrl);
