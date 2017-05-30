@@ -14,8 +14,7 @@ ENV passwd passwd
 ENV ssname jaz-ss
 
 RUN chmod +x /var/www/html/run.sh
-RUN chmod 755 /var/www/html/*
 
 EXPOSE 80
-CMD ["ls -l /var/www/html/"]
+
 CMD ["/var/www/html/run.sh"]
