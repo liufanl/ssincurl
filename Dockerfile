@@ -9,9 +9,9 @@ RUN docker-php-ext-install pdo_mysql
 COPY . /var/www/html/
 
 
-ENV user xx@xx.xx
-ENV passwd passwd
-ENV ssname jaz-ss
+#ENV user xx@xx.xx
+#ENV passwd passwd
+#ENV ssname jaz-ss
 
 RUN chmod +x /var/www/html/run.sh
 
