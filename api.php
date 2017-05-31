@@ -19,7 +19,7 @@ function login($cookie)
         //原版通过输入用户名密码方式
         //'email' => isset($_GET['email']) ? $_GET['email'] : null,
         //'password' => isset($_GET['password']) ? $_GET['password'] : null
-        //通过设置docker env方式
+        ///通过设置docker env方式
         'email' => "user", //此处输入您的arukas登录邮箱
         'password' => "passwd" //此处输入您的arukas登录密码
     );
