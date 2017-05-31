@@ -17,4 +17,4 @@ RUN chmod +x /var/www/html/run.sh
 
 EXPOSE 80
 
-CMD ["/var/www/html/run.sh"]
+ENTRYPOINT ["/var/www/html/run.sh"]
